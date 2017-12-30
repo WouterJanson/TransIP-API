@@ -2,7 +2,7 @@
 > A client library for the TransIP API
 
 [![GitHub issues](https://img.shields.io/github/issues/WouterJanson/TransIP.NET.svg)](https://github.com/WouterJanson/TransIP.NET/issues)
-[![license](https://img.shields.io/github/license/WouterJanson/TransIP.NET.svg)](https://github.com/WouterJanson/TransIP.NET/blob/master/LICENCE)
+[![license](https://img.shields.io/github/license/WouterJanson/TransIP.NET.svg)](https://github.com/WouterJanson/TransIP.NET/blob/master/LICENSE)
 
 A .Net Core client library for the TransIP Api, based on the original work of jwvdiermen.
 
@@ -28,6 +28,13 @@ Void ToDo(){
 
 * 1.0.0
     * Initial release
+
+## TODO
+
+* Make calls Async
+* Add other services
+* Re-add unit tests
+* Write Example code
 
 ## Contributing
 
