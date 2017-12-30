@@ -24,38 +24,38 @@ namespace TransIp.Api
 		/// </summary>
 		static DomainService()
 		{
-			Mapper.CreateMap<DnsEntry, Remote.DnsEntry>();
-			Mapper.CreateMap<Remote.DnsEntry, DnsEntry>();
+			Mapper.Initialize(cfg => {
+				cfg.CreateMap<DnsEntry, Remote.DnsEntry>();
+				cfg.CreateMap<Remote.DnsEntry, DnsEntry>();
 
-			Mapper.CreateMap<Remote.Domain, Domain>()
-				.ForMember(x => x.IsLocked, opt => opt.ResolveUsing(x => x.isLockedSpecified ? x.isLocked : (bool?) null));
-			Mapper.CreateMap<Domain, Remote.Domain>()
-				.ForMember(x => x.isLocked, opt => opt.ResolveUsing(x => x.IsLocked.GetValueOrDefault(false)))
-				.ForMember(x => x.isLockedSpecified, opt => opt.ResolveUsing(x => x.IsLocked.HasValue));
+				cfg.CreateMap<Remote.Domain, Domain>()
+					.ForMember(x => x.IsLocked, opt => opt.ResolveUsing(x => x.isLockedSpecified ? x.isLocked : (bool?)null));
+				cfg.CreateMap<Domain, Remote.Domain>()
+					.ForMember(x => x.isLocked, opt => opt.ResolveUsing(x => x.IsLocked.GetValueOrDefault(false)))
+					.ForMember(x => x.isLockedSpecified, opt => opt.ResolveUsing(x => x.IsLocked.HasValue));
 
-			Mapper.CreateMap<Remote.DomainAction, DomainAction>();
-			Mapper.CreateMap<DomainAction, Remote.DomainAction>();
+				cfg.CreateMap<Remote.DomainAction, DomainAction>();
+				cfg.CreateMap<DomainAction, Remote.DomainAction>();
 
-			Mapper.CreateMap<Remote.DomainBranding, DomainBranding>();
-			Mapper.CreateMap<DomainBranding, Remote.DomainBranding>();
+				cfg.CreateMap<Remote.DomainBranding, DomainBranding>();
+				cfg.CreateMap<DomainBranding, Remote.DomainBranding>();
 
-			Mapper.CreateMap<Remote.DomainCheckResult, DomainCheckResult>();
+				cfg.CreateMap<Remote.DomainCheckResult, DomainCheckResult>();
 
-			Mapper.CreateMap<Remote.Nameserver, Nameserver>();
-			Mapper.CreateMap<Nameserver, Remote.Nameserver>();
+				cfg.CreateMap<Remote.Nameserver, Nameserver>();
+				cfg.CreateMap<Nameserver, Remote.Nameserver>();
 
-			Mapper.CreateMap<Remote.Tld, Tld>()
-				.ForMember(x => x.CapabilityList, opt => opt.MapFrom(x => x.capabilities))
-				.ForMember(x => x.Capabilities, opt => opt.Ignore());
-			Mapper.CreateMap<Tld, Remote.Tld>()
-				.ForMember(x => x.capabilities, opt => opt.MapFrom(x => x.CapabilityList));
+				cfg.CreateMap<Remote.Tld, Tld>()
+					.ForMember(x => x.CapabilityList, opt => opt.MapFrom(x => x.capabilities))
+					.ForMember(x => x.Capabilities, opt => opt.Ignore());
+				cfg.CreateMap<Tld, Remote.Tld>()
+					.ForMember(x => x.capabilities, opt => opt.MapFrom(x => x.CapabilityList));
 
-			Mapper.CreateMap<Remote.WhoisContact, WhoisContact>()
-				.ForMember(x => x.CompanyNumber, opt => opt.MapFrom(x => x.companyKvk));
-			Mapper.CreateMap<WhoisContact, Remote.WhoisContact>()
-				.ForMember(x => x.companyKvk, opt => opt.MapFrom(x => x.CompanyNumber));
-
-			Mapper.AssertConfigurationIsValid();
+				cfg.CreateMap<Remote.WhoisContact, WhoisContact>()
+					.ForMember(x => x.CompanyNumber, opt => opt.MapFrom(x => x.companyKvk));
+				cfg.CreateMap<WhoisContact, Remote.WhoisContact>()
+					.ForMember(x => x.companyKvk, opt => opt.MapFrom(x => x.CompanyNumber));
+			});
 		}
 
 		/// <summary>

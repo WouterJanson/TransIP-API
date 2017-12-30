@@ -47,16 +47,15 @@ namespace TransIp.Api
 		{
 			get
 			{
-				if (_binding == null)
-				{
-					_binding = new BasicHttpBinding
-					{
-						MaxReceivedMessageSize = int.MaxValue,
-						HostNameComparisonMode = HostNameComparisonMode.StrongWildcard,
-						AllowCookies = false
-					};
-					_binding.Security.Mode = BasicHttpSecurityMode.Transport;
+				if (_binding != null) {
+					return _binding;
 				}
+				_binding = new BasicHttpBinding
+				{
+					MaxReceivedMessageSize = int.MaxValue,
+					AllowCookies = false,
+					Security = {Mode = BasicHttpSecurityMode.Transport}
+				};
 				return _binding;
 			}
 		}
@@ -79,7 +78,7 @@ namespace TransIp.Api
 			Cookies = new CookieContainer();
 
 			Client = CreateClient(BasicHttpBinding, new EndpointAddress(_uri));
-			Client.ChannelFactory.Endpoint.Behaviors.Add(new CookieEndpointBehavior(Cookies, _uri));
+			Client.ChannelFactory.Endpoint.EndpointBehaviors.Add(new CookieEndpointBehavior(Cookies, _uri));
 
 			// Set the static cookies.
 			AddCookie("login", Login);

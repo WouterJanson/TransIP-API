@@ -25,15 +25,14 @@ namespace TransIp.Api
 
 		public void AfterReceiveReply(ref Message reply, object correlationState)
 		{
-			var httpResponse = reply.Properties[HttpResponseMessageProperty.Name] as HttpResponseMessageProperty;
-			if (httpResponse != null)
-			{
-				var cookie = httpResponse.Headers[HttpResponseHeader.SetCookie];
+            if (!(reply.Properties[HttpResponseMessageProperty.Name] is HttpResponseMessageProperty httpResponse)) {
+                return;
+            }
 
-				if (!string.IsNullOrEmpty(cookie))
-				{
-					_cookieContainer.SetCookies(new Uri(Uri), cookie);
-				}
+			var cookie = httpResponse.Headers[HttpResponseHeader.SetCookie];
+
+			if (!string.IsNullOrEmpty(cookie)) {
+				_cookieContainer.SetCookies(new Uri(Uri), cookie);
 			}
 		}
 
@@ -41,8 +40,7 @@ namespace TransIp.Api
 		{
 			// The HTTP request object is made available in the outgoing message only when
 			// the Visual Studio Debugger is attacched to the running process
-			if (!request.Properties.ContainsKey(HttpRequestMessageProperty.Name))
-			{
+			if (!request.Properties.ContainsKey(HttpRequestMessageProperty.Name)) {
 				request.Properties.Add(HttpRequestMessageProperty.Name, new HttpRequestMessageProperty());
 			}
 

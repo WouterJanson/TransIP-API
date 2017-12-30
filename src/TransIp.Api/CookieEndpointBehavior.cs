@@ -22,7 +22,7 @@ namespace TransIp.Api
 
 		public void ApplyClientBehavior(ServiceEndpoint endpoint, ClientRuntime clientRuntime)
 		{
-			clientRuntime.MessageInspectors.Add(new CookieMessageInspector(_cookieContainer, _uri));
+			clientRuntime.ClientMessageInspectors.Add(new CookieMessageInspector(_cookieContainer, _uri));
 		}
 
 		public void ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
