@@ -100,8 +100,7 @@ namespace TransIp.Api
 		/// <param name="args">The passed arguments.</param>
 		protected void SetSignatureCookies(string method, object[] args)
 		{
-			var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-			var timestamp = Convert.ToInt64((DateTime.UtcNow - epoch).TotalSeconds);
+            var timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
 			var nonce = Guid.NewGuid().ToString("N");
 
