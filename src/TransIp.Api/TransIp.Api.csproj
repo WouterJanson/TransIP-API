@@ -12,6 +12,7 @@
     <PackageLicenseUrl>https://github.com/WouterJanson/TransIP.NET/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/WouterJanson/TransIP.NET</PackageProjectUrl>
     <AssemblyName>TransIP.NET</AssemblyName>
+    <Version>1.0.1</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AntiXSS" Version="4.3.0" />
