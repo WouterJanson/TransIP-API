@@ -19,9 +19,24 @@ PM> Install-Package TransIP.NET
 Here are some code example on how to use the TransIP.NET package, currently only the `DomainService` is supported.
 
 ```csharp
-Void ToDo(){
-  Examples.Add();
-}
+using TransIp.Api;
+using TransIp.Api.Dto;
+
+//
+// Retrieve current DNS entries and add a record
+//
+var domainService = new DomainService("YourUsername", ClientMode.ReadWrite, "YourPrivateKey");
+
+var info = domainService.GetInfo("example.com");
+var entries = info.DnsEntries.ToList();
+entries.Add(new DnsEntry
+{
+	Name = "local",
+	Type = DnsEntryType.A,
+	Expire = 3600, // 1 hour
+	Content = "127.0.0.1"
+});
+domainService.SetDnsEntries("example.com", entries.ToArray());
 ```
 
 ## Release History
@@ -34,7 +49,7 @@ Void ToDo(){
 * Make calls Async
 * Add other services
 * Re-add unit tests
-* Write Example code
+* Write more example code
 
 ## Contributing
 
