@@ -41,12 +41,14 @@ domainService.SetDnsEntries("example.com", entries.ToArray());
 
 ## Release History
 
+* 1.1.0
+    * Added `async` methods
+    * Added `ToString()` method for `DnsEntry`
 * 1.0.0
     * Initial release
 
 ## TODO
 
-* Make calls Async
 * Add other services
 * Re-add unit tests
 * Write more example code
