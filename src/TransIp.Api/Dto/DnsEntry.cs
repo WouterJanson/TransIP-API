@@ -31,6 +31,8 @@ namespace TransIp.Api.Dto
 		/// </summary>
 		[DataMember(Name = "content")]
 		public string Content { get; set; }
+
+		public override string ToString() => $"{Name} IN {Expire} {Type} {Content}";
 	}
 
 	/// <summary>
