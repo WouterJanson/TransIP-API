@@ -3,6 +3,7 @@
 
 [![GitHub issues](https://img.shields.io/github/issues/WouterJanson/TransIP.NET.svg)](https://github.com/WouterJanson/TransIP.NET/issues)
 [![license](https://img.shields.io/github/license/WouterJanson/TransIP.NET.svg)](https://github.com/WouterJanson/TransIP.NET/blob/master/LICENSE)
+[![NuGet](https://img.shields.io/nuget/v/TransIP.NET.svg)](https://www.nuget.org/packages/TransIP.NET/)
 
 A .Net Core client library for the TransIP Api, based on the original work of jwvdiermen.
 
