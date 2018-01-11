@@ -29,7 +29,7 @@ using TransIp.Api.Dto;
 //
 var domainService = new DomainService("YourUsername", ClientMode.ReadWrite, "YourPrivateKey");
 
-var info = domainService.GetInfo("example.com");
+var info = await domainService.GetInfoAsync("example.com");
 var entries = info.DnsEntries.ToList();
 entries.Add(new DnsEntry
 {
@@ -38,7 +38,7 @@ entries.Add(new DnsEntry
 	Expire = 3600, // 1 hour
 	Content = "127.0.0.1"
 });
-domainService.SetDnsEntries("example.com", entries.ToArray());
+await domainService.SetDnsEntriesAsync("example.com", entries.ToArray());
 ```
 
 ## Release History
