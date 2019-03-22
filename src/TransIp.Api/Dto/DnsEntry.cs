@@ -46,6 +46,7 @@ namespace TransIp.Api.Dto
 		MX,
 		NS,
 		TXT,
-		SRV
+		SRV,
+		TLSA
 	}
 }
