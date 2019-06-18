@@ -47,6 +47,7 @@ namespace TransIp.Api.Dto
 		NS,
 		TXT,
 		SRV,
+		SSHFP,
 		TLSA,
 		CAA
 	}
